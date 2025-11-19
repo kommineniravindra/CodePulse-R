@@ -1,24 +1,3 @@
-// const express = require("express");
-// const router = express.Router();
-// const {
-//   addQuiz,
-//   updateQuiz,
-//   getQuizzesByUser,
-// } = require("../controllers/quizController");
-// const { protect } = require("../middleware/authMiddleware");
-
-// // POST /api/quizzes
-// router.post("/", protect, addQuiz);
-
-// // PATCH /api/quizzes
-// router.patch("/", protect, updateQuiz);
-
-// // GET /api/quizzes/user/:userId
-// router.get("/user/:userId", protect, getQuizzesByUser);
-
-// module.exports = router;
-
-
 
 const express = require("express");
 const router = express.Router();

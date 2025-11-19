@@ -1,10 +1,10 @@
 {
   "name": "v2-api-tutorial",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,15 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kommineniravindra/CodePulse-R.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kommineniravindra/CodePulse-R/issues"
+  },
+  "homepage": "https://github.com/kommineniravindra/CodePulse-R#readme",
+  "description": ""
 }

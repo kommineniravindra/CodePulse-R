@@ -3,7 +3,7 @@ const User = require("../models/User");
 // Combined function to add or update a quiz result
 const submitQuiz = async (req, res) => {
   try {
-    const { quizCode, mcqMarks, fillMarks, codingMarks } = req.body;
+    const { quizCode, mcqMarks, fillMarks, codingMarks,totalMarksPossible } = req.body;
     const user = await User.findById(req.user._id);
 
     if (!user) {
@@ -14,12 +14,15 @@ const submitQuiz = async (req, res) => {
     const existingQuiz = user.quizzes.find((q) => q.quizCode === quizCode);
 
     if (existingQuiz) {
+
+       existingQuiz.totalMarksPossible = totalMarksPossible;
       // Quiz already exists, check if the new score is higher
       if (grandTotal > existingQuiz.grandTotal) {
         existingQuiz.mcqMarks = mcqMarks;
         existingQuiz.fillMarks = fillMarks;
         existingQuiz.codingMarks = codingMarks;
         existingQuiz.grandTotal = grandTotal;
+        
         existingQuiz.createdAt = new Date(); // Update timestamp
         await user.save();
         return res.json({
@@ -27,6 +30,7 @@ const submitQuiz = async (req, res) => {
           quiz: existingQuiz,
         });
       } else {
+         await user.save();
         return res.status(200).json({
           message: `Your new score of ${grandTotal} is not higher than your previous score of ${existingQuiz.grandTotal}. The score was not updated.`,
           quiz: existingQuiz,
@@ -40,6 +44,7 @@ const submitQuiz = async (req, res) => {
         fillMarks,
         codingMarks,
         grandTotal,
+        totalMarksPossible,
       });
       await user.save();
       return res

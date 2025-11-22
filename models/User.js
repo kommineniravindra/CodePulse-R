@@ -20,6 +20,7 @@ const quizSchema = new mongoose.Schema(
     mcqMarks: { type: Number, default: 0 },
     fillMarks: { type: Number, default: 0 },
     codingMarks: { type: Number, default: 0 },
+    totalMarksPossible: { type: Number, default: 0 },
     grandTotal: { type: Number, default: 0 },
   },
   { timestamps: true }

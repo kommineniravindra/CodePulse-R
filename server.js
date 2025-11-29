@@ -18,6 +18,7 @@ const questionRoutes = require("./routes/questionRoutes");
 
 const app = express();
 app.use(cors());
+
 app.use(express.json());
 
 // Basic route

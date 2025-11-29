@@ -5,13 +5,16 @@ const {
   getUserProfile,
   getAllUserScores,
 } = require("../controllers/authController");
-const { protect } = require("../middleware/authMiddleware");
+
+const { protect, admin } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/profile", protect, getUserProfile);
-router.get("/all-scores", protect, getAllUserScores);
+
+// ONLY ADMIN CAN ACCESS THIS
+router.get("/all-scores", protect, admin, getAllUserScores);
 
 module.exports = router;

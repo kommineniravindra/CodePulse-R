@@ -57,10 +57,12 @@ const userSchema = new mongoose.Schema(
     passingYear: { type: Number, required: true },
     cgpa: { type: Number, required: true },
 
+     isAdmin: { type: Boolean, default: false },
+
     // Arrays of subdocuments
     exams: [examSchema],
     quizzes: [quizSchema],
-    contests: [contestSchema], // This schema now includes the 'code' field
+    contests: [contestSchema],
   },
   { timestamps: true }
 );
